@@ -21,3 +21,15 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::middleware(["auth:web"])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
+
+Route::get('broadcast',function(){
+    event(new \App\Events\LoginEvent());
+});
+
+Route::get('workman',function(){
+    return view('welcome');
+});
+
+Route::get('sendmessage/{word}',function(\Illuminate\Http\Request $request,$word){
+    \GatewayWorker\Lib\Gateway::sendToAll($word);
+});
