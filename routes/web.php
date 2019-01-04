@@ -31,5 +31,6 @@ Route::get('workman',function(){
 });
 
 Route::get('sendmessage/{word}',function(\Illuminate\Http\Request $request,$word){
+    \GatewayWorker\Lib\Gateway::$registerAddress = '127.0.0.1:1236';
     \GatewayWorker\Lib\Gateway::sendToAll($word);
 });
