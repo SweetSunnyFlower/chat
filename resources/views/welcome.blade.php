@@ -13,7 +13,7 @@
     </body>
 </html>
 <script>
-    ws = new WebSocket("ws://127.0.0.1:2346");
+    ws = new WebSocket("ws://"+document.domain+":2346");
     ws.onopen = function() {
         console.log("连接成功");
 
