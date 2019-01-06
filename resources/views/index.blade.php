@@ -622,7 +622,7 @@
                                 <i class="media-object" :style="`background-image: url(${message.header})`"></i>
                                 {{--<i class="media-object" style="background-image: url('http://gbb.resourse.com/img/content/comment.png')"></i>--}}
                                 <div class="comm_info">
-                                    <h4 class="media-heading">@{{wechat_name?wechat_name:'访客'}}</h4>
+                                    <h4 class="media-heading">@{{message.name}}</h4>
                                     <span class="time">@{{message.created_at}}</span>
                                 </div>
                             </div>
@@ -891,11 +891,15 @@
                     }else if(received_info.type == 'message'){
                         vm.messages.push({
                             "header":"/img/comment/comment.png",
-                            "name":received_info.info.name?received_info.info.name:"访客",
+                            "name":received_info.info.name,
                             "message":received_info.info.message,
                             "created_at":received_info.info.created_at
                         });
+                        console.log(111111);
+                        console.log(vm.messages);
                         vm.scrollToBottom();
+                        // console.log(received_info);
+                    }else{
                         console.log(received_info);
                     }
                 };
