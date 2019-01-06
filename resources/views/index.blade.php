@@ -631,11 +631,13 @@
                     </div>
                     <div class="comments__form">
                         <form action="#" method="POST">
+                            {{--@guest--}}
+                            {{--<div class="form-group">--}}
+                                {{--<input type="text" class="form-control" v-model="wechat_name" placeholder="聊天昵称">--}}
+                            {{--</div>--}}
+                            {{--@endguest--}}
                             <div class="form-group">
-                                <input type="text" class="form-control" v-model="wechat_name" placeholder="聊天昵称">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" @keyup.enter="sendMessage()" v-model="template_message" required="required"  placeholder="聊天内容">
+                                <input type="text" class="form-control" @keyup.enter="sendMessage()" v-model="template_message" required="required"  :placeholder="placeholder">
                             </div>
                             <button type="button" @click="sendMessage()" class="btn btn-comment">发送</button>
                         </form>
@@ -664,7 +666,6 @@
     <div id="footer" class="content">
       <div class="containers">
         <div class="row">
-
           <div class="col-md-12 text-center">
             <a href="{{route('/')}}" class="footer-logo"><span>{{config('app.name')}}</span></a>
             <ul class="social">
@@ -803,6 +804,9 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- sweetalter -->
   <script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+  <!-- axios -->
+  <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
   <!-- end script -->
 </body>
 
@@ -812,7 +816,8 @@
         var app = new Vue({
             el: '#wechat',
             data: {
-                wechat_name: '访客',
+                placeholder:"聊天内容",
+                wechat_name: "{{auth()->user()->name??'访客'}}",
                 messages:[
 
                 ],
@@ -820,16 +825,37 @@
             },
             methods:{
                 sendMessage(){
+                    if("{{!auth()->check()}}"){
+                        location.href="/login";
+                        return;
+                    }
                     if(!this.template_message){
                         swal( "Oops" ,  "请输入内容!" ,  "error" );
                         return;
                     }
-                    this.messages.push({
-                        "header":"/img/comment/comment.png",
-                        "name":this.wechat_name?this.wechat_name:"访客",
-                        "message":this.template_message,
-                        "created_at":new Date()
+                    vm = this;
+                    vm.placeholder = "发送中...";
+                    axios.get('/send',{
+                        params:{
+                            message:this.template_message
+                        }
+                    }).then(function(res){
+                        console.log(111);
+                        if(res.status == 200){
+                            vm.placeholder = "发送完成";
+                        }
+                        console.log(res);
+                    }).catch(function(err){
+                        vm.placeholder = "发送失败";
+                        console.log(err);
                     });
+
+                    // this.messages.push({
+                    //     "header":"/img/comment/comment.png",
+                    //     "name":this.wechat_name?this.wechat_name:"访客",
+                    //     "message":this.template_message,
+                    //     "created_at":new Date()
+                    // });
                     this.template_message = '';
                     this.scrollToBottom();
                 },
@@ -851,10 +877,25 @@
                     console.log(e);
                     console.log(JSON.parse(e.data));
                     if(received_info.type == 'login'){
+                        axios.get('/bind',{
+                            params:{
+                                client_id:received_info.info.client_id
+                            }
+                        }).then(function(res){
+                            console.log(res);
+                        }).catch(function(err){
+                            console.log(err);
+                        });
                         localStorage.setItem('client_id',received_info.info.client_id);
                         console.log(received_info.info.client_id);
-                    }else{
-                        console.log(vm.messages);
+                    }else if(received_info.type == 'message'){
+                        vm.messages.push({
+                            "header":"/img/comment/comment.png",
+                            "name":received_info.info.name?received_info.info.name:"访客",
+                            "message":received_info.info.message,
+                            "created_at":received_info.info.created_at
+                        });
+                        vm.scrollToBottom();
                         console.log(received_info);
                     }
                 };

@@ -20,6 +20,8 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::middleware(["auth:web"])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/send','Api\Messages\ReceivedController@received');
+    Route::get('/bind','Api\Messages\UserController@bind');
 });
 
 Route::get('broadcast',function(){
@@ -34,3 +36,5 @@ Route::get('sendmessage/{word}',function(\Illuminate\Http\Request $request,$word
     \GatewayWorker\Lib\Gateway::$registerAddress = '127.0.0.1:1236';
     \GatewayWorker\Lib\Gateway::sendToAll($word);
 });
+
+
