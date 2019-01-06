@@ -616,7 +616,7 @@
                 844540467@qq.com
               </address>
                 <div id="wechat">
-                    <div class="col-sm-9 col-md-12 col-lg-12 comments">
+                    <div class="col-sm-9 col-md-12 col-lg-12 comments" id="new_message">
                         <div class="comments__media"  v-for="message in messages">
                             <div class="media-middle">
                                 <i class="media-object" :style="`background-image: url(${message.header})`"></i>
@@ -635,7 +635,7 @@
                                 <input type="text" class="form-control" v-model="wechat_name" placeholder="聊天昵称">
                             </div>
                             <div class="form-group">
-                                <textarea name="text" id="input" class="form-control" rows="1" required="required" v-model="template_message"></textarea>
+                                <input type="text" class="form-control" @keyup.enter="sendMessage()" v-model="template_message" required="required"  placeholder="聊天内容">
                             </div>
                             <button type="button" @click="sendMessage()" class="btn btn-comment">发送</button>
                         </form>
@@ -831,6 +831,13 @@
                         "created_at":new Date()
                     });
                     this.template_message = '';
+                    this.scrollToBottom();
+                },
+                scrollToBottom: function () {
+                    this.$nextTick(() => {
+                        var container = this.$el.querySelector("#new_message");
+                        container.scrollTop = container.scrollHeight;
+                    });
                 }
             },
             mounted(){
