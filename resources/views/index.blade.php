@@ -19,6 +19,7 @@
   <!-- Owl Carousel -->
   <link rel="stylesheet" href="{{asset('css/owl.theme.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
+  <link rel="stylesheet" href="{{asset('css/my.css')}}">
   <!-- Addon Style -->
   <link rel="stylesheet" href="{{asset('css/index.style.css')}}" media="screen" />
   <!--[if IE]>
@@ -614,6 +615,33 @@
               <address>
                 844540467@qq.com
               </address>
+                <div id="wechat">
+                    <div class="col-sm-9 col-md-12 col-lg-12 comments">
+                        <div class="comments__media"  v-for="message in messages">
+                            <div class="media-middle">
+                                <i class="media-object" :style="`background-image: url(${message.header})`"></i>
+                                {{--<i class="media-object" style="background-image: url('http://gbb.resourse.com/img/content/comment.png')"></i>--}}
+                                <div class="comm_info">
+                                    <h4 class="media-heading">@{{wechat_name?wechat_name:'访客'}}</h4>
+                                    <span class="time">@{{message.created_at}}</span>
+                                </div>
+                            </div>
+                            <p class="media-body">@{{ message.message }}</p>
+                        </div>
+                    </div>
+                    <div class="comments__form">
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" v-model="wechat_name" placeholder="聊天昵称">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="text" id="input" class="form-control" rows="1" required="required" v-model="template_message"></textarea>
+                            </div>
+                            <button type="button" @click="sendMessage()" class="btn btn-comment">发送</button>
+                        </form>
+                    </div>
+                </div>
+
             </div>
           </div>
           <!-- End google maps -->
@@ -771,8 +799,78 @@
   <!-- Custom js -->
   <script src="js/main.js"></script>
 
+  <!-- vue-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- sweetalter -->
+  <script src="https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js"></script>
   <!-- end script -->
 </body>
 
 </html>
+<script>
+    $(function(){
+        var app = new Vue({
+            el: '#wechat',
+            data: {
+                wechat_name: '访客',
+                messages:[
+
+                ],
+                template_message:''
+            },
+            methods:{
+                sendMessage(){
+                    if(!this.template_message){
+                        swal( "Oops" ,  "请输入内容!" ,  "error" );
+                        return;
+                    }
+                    this.messages.push({
+                        "header":"/img/comment/comment.png",
+                        "name":this.wechat_name?this.wechat_name:"访客",
+                        "message":this.template_message,
+                        "created_at":new Date()
+                    });
+                    this.template_message = '';
+                }
+            },
+            mounted(){
+                vm = this;
+                ws = new WebSocket("ws://"+document.domain+":2346");
+                ws.onopen = function() {
+                    console.log("连接成功");
+                };
+                ws.onmessage = function(e) {
+                    var received_info = JSON.parse(e.data);
+                    console.log(e);
+                    console.log(JSON.parse(e.data));
+                    if(received_info.type == 'login'){
+                        localStorage.setItem('client_id',received_info.info.client_id);
+                        console.log(received_info.info.client_id);
+                    }else{
+                        console.log(vm.messages);
+                        console.log(received_info);
+                    }
+                };
+            }
+        });
+
+
+    });
+
+    // var string = ` <div class="comments__media">
+    //                     <div class="media-middle">
+    //                         <i class="media-object" style="background-image: url('http://gbb.resourse.com/img/content/comment.png')"></i>
+    //                         <div class="comm_info">
+    //                             <h4 class="media-heading">SweetSunnyFlower</h4>
+    //                             <span class="time">today, 12:30</span>
+    //                         </div>
+    //                     </div>
+    //                     <p class="media-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    //                 </div>`;
+    //
+    // $(".comments").append(string);
+
+
+
+</script>
 

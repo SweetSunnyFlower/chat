@@ -13,6 +13,13 @@ class WorkmanEvent
 
     public static function onConnect($client_id)
     {
+        $connect_info = [
+            'type'=>'login',
+            'info'=>[
+                'client_id'=>$client_id
+            ]
+        ];
+        Gateway::sendToCurrentClient(json_encode($connect_info));
     }
 
     public static function onWebSocketConnect($client_id, $data)
@@ -25,7 +32,7 @@ class WorkmanEvent
     {
         $message = json_decode($message);
 //        l($message);
-        if($message->event == 'login'){
+        if($message->type == 'login'){
             Gateway::bindUid($client_id, $message->info);
             l(json_decode($message->info));
         }

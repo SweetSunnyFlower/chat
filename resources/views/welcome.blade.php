@@ -18,7 +18,7 @@
         console.log("连接成功");
 
         var login_info = {
-            "event":"login",
+            "type":"login",
             "info":"{{auth()->id()??'游客'}}"
         };
         login_info = JSON.stringify(login_info);
@@ -31,7 +31,7 @@
 
     function send() {
         var info = {
-            "event":"say",
+            "type":"say",
             "info":"hello world!!!"
         };
         info = JSON.stringify(info);
