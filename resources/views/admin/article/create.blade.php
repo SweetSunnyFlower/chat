@@ -11,37 +11,38 @@
             <div class="block-header">
                 <h2>发布文章</h2>
             </div>
-
+            <form action="{{route('article.store')}}" method="POST">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header">
-                            <h2>
-                                TINYMCE
-                                <small>Taken from <a href="https://www.tinymce.com" target="_blank">www.tinymce.com</a></small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="body">
-                            <textarea id="tinymce">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="title" required>
+                                    <label class="form-label">标题</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="radio" checked="checked" name="is_publish" id="publish" value="true" class="with-gap">
+                                <label for="publish">发布</label>
+
+                                <input type="radio" name="is_publish" id="no_publish" value="false" class="with-gap">
+                                <label for="no_publish" class="m-l-20">不发布</label>
+                            </div>
+
+                            @csrf
+                            <div class="form-group">
+                            <textarea id="tinymce" name="contents">
 
                             </textarea>
+                            </div>
+                            <button class="btn btn-primary waves-effect" type="submit">发布</button>
                         </div>
                     </div>
                 </div>
             </div>
 
+            </form>
         </div>
     </section>
 @endsection
