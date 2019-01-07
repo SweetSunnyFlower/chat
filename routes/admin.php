@@ -6,6 +6,8 @@ Route::group(['namespace'=>'Admin'],function(){
 
     Route::middleware(["auth:admin"])->group(function () {
         Route::get('/', 'AdminController@index')->name('admin');
+        Route::get('/article/create', 'ArticleController@create')->name('article.create');
     });
 
 });
+Route::post('/upload','UploadController@image');
