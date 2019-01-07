@@ -13,3 +13,7 @@ yarn-error.log
 html/
 
 \.idea/workspace\.xml
+
+*.iml
+
+\.idea/
