@@ -8,6 +8,6 @@ class UploadController extends Controller
 {
     public function image(Request $request){
         $filename = $request->file('file')->store('/article');
-        return response()->json(['error'=>false,'path'=>$filename]);
+        return response()->json(['error'=>false,'path'=>config('filesystems.disks.public.url').'/'.$filename]);
     }
 }
