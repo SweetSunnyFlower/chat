@@ -630,14 +630,14 @@
                         </div>
                     </div>
                     <div class="comments__form">
-                        <form action="#" method="POST">
+                        <form @submit.prevent="()=>false">
                             {{--@guest--}}
                             {{--<div class="form-group">--}}
                                 {{--<input type="text" class="form-control" v-model="wechat_name" placeholder="聊天昵称">--}}
                             {{--</div>--}}
                             {{--@endguest--}}
                             <div class="form-group">
-                                <input type="text" class="form-control" @keyup.enter="sendMessage()" v-model="template_message" required="required"  :placeholder="placeholder">
+                                <input type="text" :placeholder="placeholder" class="form-control" @keyup.prevent.enter="sendMessage()" v-model="template_message" />
                             </div>
                             <button type="button" @click="sendMessage()" class="btn btn-comment">发送</button>
                         </form>
