@@ -17,3 +17,5 @@ html/
 *.iml
 
 \.idea/
+
+public/uploads/
