@@ -20,12 +20,12 @@ class Article extends Model
     }
 
     public function index(){
-        return $this->query()->with('typeInfo','user')->limit(30)->get();
+        return $this->query()->with('typeInfo','user')->limit(15)->get();
     }
 
     public function subContent(){
         return $this->index()->map(function($query){
-            $query->contents = substr($query->contents,0,200);
+            $query->contents = substr($query->contents,0,1000);
             return $query;
         });
     }

@@ -157,7 +157,7 @@
                             <span class="post-author"><i>by</i><a href="#">{{$article->user->name}}</a></span>
                         </h5>
                         <h3 class="post-title"><a href="{{route('article.show',['id'=>$article->id])}}">{{$article->title}}</a></h3>
-                        <p>{{$article->contents}}...</p>
+                        {{--<p>{!! $article->contents !!}...</p>--}}
                         <footer class="row">
                             <h5 class="taxonomy"><i>type of</i> <a href="#">{{$article->type}}</a></h5>
                             <div class="response-count"><img src="/blog/images/comment-icon-gray.png" alt="">{{$article->comments}}</div>

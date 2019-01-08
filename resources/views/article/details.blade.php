@@ -129,7 +129,7 @@
                         <a href="#"><img src="{{$article->cover_big}}" alt=""></a>
                     </div>
                     <div class="post-content row">
-                        {{$article->contents}}
+                        {!! $article->contents !!}
                         <br>
                         <!-- Place somewhere in the <body> of your page -->
                         <div class="thumbCarousel row m0">
