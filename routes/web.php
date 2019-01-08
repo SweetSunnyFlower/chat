@@ -1,7 +1,5 @@
 <?php
-Route::get('/', function () {
-return view('index');
-})->name('/');
+Route::get('/', 'IndexController@index')->name('/');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -18,10 +16,16 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+Route::get('/myself', 'IndexController@myself')->name('myself');
+
+Route::group(['prefix'=>'articles'],function(){
+    Route::get('/{article}','ArticleController@show')->name('article.show');
+});
+
 Route::middleware(["auth:web"])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/send','Api\Messages\ReceivedController@received');
     Route::get('/bind','Api\Messages\UserController@bind');
+
 });
 
 Route::get('broadcast',function(){
@@ -37,4 +41,8 @@ Route::get('sendmessage/{word}',function(\Illuminate\Http\Request $request,$word
     \GatewayWorker\Lib\Gateway::sendToAll($word);
 });
 
+Route::get('test',function(){
+
+   return collect(array_column(\App\User::all('id')->toArray(),'id'))->random();
+});
 
