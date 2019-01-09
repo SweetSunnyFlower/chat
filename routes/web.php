@@ -42,7 +42,14 @@ Route::get('sendmessage/{word}',function(\Illuminate\Http\Request $request,$word
 });
 
 Route::get('test',function(){
-
-   return collect(array_column(\App\User::all('id')->toArray(),'id'))->random();
+    $img = file_get_contents('https://source.unsplash.com/random/360x244');
+    return file_put_contents(public_path('/test').'.jpg',$img);
+    $articles = \App\Models\Article::query()->get();
+    foreach ($articles as $article){
+        $article->created_at = date('Y-m-d H:i:s',time() - rand(1,856000));
+        $article->save();
+    }
+    return 1;
+//   return collect(array_column(\App\User::all('id')->toArray(),'id'))->random();
 });
 
