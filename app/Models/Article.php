@@ -21,7 +21,7 @@ class Article extends Model
     }
 
     public function index(){
-        return $this->query()->with('typeInfo','user')->limit(15)->get();
+        return $this->query()->with('typeInfo','user')->limit(15)->orderBy('id','desc')->get();
     }
 
     public function subContent(){
