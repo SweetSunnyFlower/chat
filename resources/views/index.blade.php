@@ -26,8 +26,8 @@
 <!--========== HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries ==========-->
 <!--========== WARNING: Respond.js doesn't work if you view the page via file:// ==========-->
 <!--==========[if lt IE 9]>
-    <script src="/blog/js/html5shiv.min.js"></script>
-    <script src="/blog/js/respond.min.js"></script>
+    <script src="{{config('app.url')}}/blog/js/html5shiv.min.js"></script>
+    <script src="{{config('app.url')}}/blog/js/respond.min.js"></script>
 <![endif]==========-->
 </head>
 <body class="home">
@@ -38,7 +38,7 @@
             <div class="col-sm-4 search-form-col">
                 <form action="#" method="get" class="search-form">
                     <div class="input-group">
-                        <span class="input-group-addon"><img src="/blog/images/search-icon-white.png" alt=""></span>
+                        <span class="input-group-addon"><img src="{{config('app.url')}}/blog/images/search-icon-white.png" alt=""></span>
                         <input type="search" class="form-control" placeholder="search">
                     </div>
                 </form>
@@ -53,8 +53,8 @@
             <div class="col-sm-4 menu-trigger-col">
                 <button class="menu-trigger pull-right">
                     <span class="active-page">home</span>
-                    <img src="/blog/images/menu-align-white.png" alt="" class="icon-burger">
-                    <img src="/blog/images/menu-close-white.png" alt="" class="icon-cross">
+                    <img src="{{config('app.url')}}/blog/images/menu-align-white.png" alt="" class="icon-burger">
+                    <img src="{{config('app.url')}}/blog/images/menu-close-white.png" alt="" class="icon-cross">
                 </button>
             </div>
         </div>        
@@ -110,7 +110,7 @@
 
 <section class="row featured-post-carousel">
     <div class="item post">
-        <img src="/blog/images/featured-posts/1.jpg" alt="" class="img-responsive main-bg">
+        <img src="{{config('app.url')}}/blog/images/featured-posts/1.jpg" alt="" class="img-responsive main-bg">
         <div class="post-content">
             <div class="container">
                 <h5 class="post-meta"><i>in</i> <a href="#">Author Profile</a> | <a href="#">feb 17, 2016</a></h5>
@@ -120,7 +120,7 @@
         </div>
     </div>
     <div class="item post">
-        <img src="/blog/images/featured-posts/1-1.jpg" alt="" class="img-responsive main-bg">
+        <img src="{{config('app.url')}}/blog/images/featured-posts/1-1.jpg" alt="" class="img-responsive main-bg">
         <div class="post-content">
             <div class="container">
                 <h5 class="post-meta"><i>in</i> <a href="#">Author Profile</a> | <a href="#">feb 17, 2016</a></h5>
@@ -130,7 +130,7 @@
         </div>
     </div>
     <div class="item post">
-        <img src="/blog/images/featured-posts/1-2.jpg" alt="" class="img-responsive main-bg">
+        <img src="{{config('app.url')}}/blog/images/featured-posts/1-2.jpg" alt="" class="img-responsive main-bg">
         <div class="post-content">
             <div class="container">
                 <h5 class="post-meta"><i>in</i> <a href="#">Author Profile</a> | <a href="#">feb 17, 2016</a></h5>
@@ -160,7 +160,7 @@
                         {{--<p>{!! $article->contents !!}...</p>--}}
                         <footer class="row">
                             <h5 class="taxonomy"><i>type of</i> <a href="#">{{$article->type}}</a></h5>
-                            <div class="response-count"><img src="/blog/images/comment-icon-gray.png" alt="">{{$article->comments}}</div>
+                            <div class="response-count"><img src="{{config('app.url')}}/blog/images/comment-icon-gray.png" alt="">{{$article->comments}}</div>
                         </footer>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
             <!--Author Widget-->
             {{--<aside class="col-sm-4 widget-author widget widget-with-posts post">--}}
                 {{--<div class="widget-author-inner row">--}}
-                    {{--<div class="author-avatar row"><a href="#"><img src="/blog/images/author.png" alt="" class="img-circle"></a></div>--}}
+                    {{--<div class="author-avatar row"><a href="#"><img src="{{config('app.url')}}/blog/images/author.png" alt="" class="img-circle"></a></div>--}}
                     {{--<a href="#"><h2 class="author-name">Mark Sanders</h2></a>--}}
                     {{--<h5 class="author-title">small title</h5>--}}
                     {{--<p>The word nature is derived from the Latin word natura, or "essential qualities, innate disposition", and in ancient times, literally meant "birth".</p>--}}
@@ -190,11 +190,11 @@
                 <div class="post-wrapper row">
                     <div class="featured-content row">
                         <div class="gallery-of-post">
-                            <div class="item"><img src="/blog/images/posts/masonry/3.jpg" alt=""></div>
-                            <div class="item"><img src="/blog/images/posts/masonry/3.jpg" alt=""></div>
-                            <div class="item"><img src="/blog/images/posts/masonry/3.jpg" alt=""></div>
-                            <div class="item"><img src="/blog/images/posts/masonry/3.jpg" alt=""></div>
-                            <div class="item"><img src="/blog/images/posts/masonry/3.jpg" alt=""></div>
+                            <div class="item"><img src="{{config('app.url')}}/blog/images/posts/masonry/3.jpg" alt=""></div>
+                            <div class="item"><img src="{{config('app.url')}}/blog/images/posts/masonry/3.jpg" alt=""></div>
+                            <div class="item"><img src="{{config('app.url')}}/blog/images/posts/masonry/3.jpg" alt=""></div>
+                            <div class="item"><img src="{{config('app.url')}}/blog/images/posts/masonry/3.jpg" alt=""></div>
+                            <div class="item"><img src="{{config('app.url')}}/blog/images/posts/masonry/3.jpg" alt=""></div>
                         </div>
                     </div>
                     <div class="post-excerpt row">
@@ -206,7 +206,7 @@
                         <p>In the broadest sense, is the natural, physical, or material world or universe...</p>
                         <footer class="row">
                             <h5 class="taxonomy"><i>in</i> <a href="#">image</a>, <a href="#">entertainment</a></h5>
-                            <div class="response-count"><img src="/blog/images/comment-icon-gray.png" alt="">5</div>
+                            <div class="response-count"><img src="{{config('app.url')}}/blog/images/comment-icon-gray.png" alt="">5</div>
                         </footer>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                         <p>In the broadest sense, is the natural, physical, or material world or universe...</p>
                         <footer class="row">
                             <h5 class="taxonomy"><i>in</i> <a href="#">image</a>, <a href="#">entertainment</a></h5>
-                            <div class="response-count"><img src="/blog/images/comment-icon-gray.png" alt="">5</div>
+                            <div class="response-count"><img src="{{config('app.url')}}/blog/images/comment-icon-gray.png" alt="">5</div>
                         </footer>
                     </div>
                 </div>
@@ -231,8 +231,8 @@
                 <div class="post-wrapper row">
                     <div class="featured-content row">
                         <a href="{{route('article.show',['id'=>1])}}">
-                            <img src="/blog/images/posts/masonry/4.jpg" alt="" class="img-responsive">
-                            <img src="/blog/images/play-btn.png" alt="" class="video-mark">
+                            <img src="{{config('app.url')}}/blog/images/posts/masonry/4.jpg" alt="" class="img-responsive">
+                            <img src="{{config('app.url')}}/blog/images/play-btn.png" alt="" class="video-mark">
                         </a>
                     </div>
                     <div class="post-excerpt row">
@@ -244,7 +244,7 @@
                         <p>In the broadest sense, is the natural, physical, or material world or universe...</p>
                         <footer class="row">
                             <h5 class="taxonomy"><i>in</i> <a href="#">image</a>, <a href="#">entertainment</a></h5>
-                            <div class="response-count"><img src="/blog/images/comment-icon-gray.png" alt="">5</div>
+                            <div class="response-count"><img src="{{config('app.url')}}/blog/images/comment-icon-gray.png" alt="">5</div>
                         </footer>
                     </div>
                 </div>
@@ -273,7 +273,7 @@
                         {{--<h5 class="quote-maker"><a href="#">osho</a></h5>--}}
                         {{--<footer class="row">--}}
                             {{--<h5 class="taxonomy"><i>in</i> <a href="#">quote</a>, <a href="#">life</a></h5>--}}
-                            {{--<div class="response-count"><img src="/blog/images/comment-icon-white.png" alt="">5</div>--}}
+                            {{--<div class="response-count"><img src="{{config('app.url')}}/blog/images/comment-icon-white.png" alt="">5</div>--}}
                         {{--</footer>--}}
                     {{--</div>--}}
                 {{--</div>--}}
@@ -289,7 +289,7 @@
                         {{--<h3 class="post-title"></h3>--}}
                         {{--<footer class="row">--}}
                             {{--<h5 class="taxonomy"><i>in</i> <a href="#">link</a>, <a href="#">product</a></h5>--}}
-                            {{--<div class="response-count"><img src="/blog/images/comment-icon-gray.png" alt="">5</div>--}}
+                            {{--<div class="response-count"><img src="{{config('app.url')}}/blog/images/comment-icon-gray.png" alt="">5</div>--}}
                         {{--</footer>--}}
                     {{--</div>--}}
                 {{--</div>--}}
@@ -304,7 +304,7 @@
     <div class="container">
         <div class="row top-footer">
             <div class="widget col-sm-3 widget-about">
-                <div class="row m0"><a href="index.html"><img src="/blog/images/logo-black-green.png" alt=""></a></div>
+                <div class="row m0"><a href="index.html"><img src="{{config('app.url')}}/blog/images/logo-black-green.png" alt=""></a></div>
             </div>
             <div class="widget col-sm-5 widget-menu">
                 <div class="row">
@@ -336,12 +336,12 @@
 </footer>
 
 <!--========== jQuery (necessary for Bootstrap's JavaScript plugins) ==========-->
-<script src="/blog/js/jquery-2.2.0.min.js"></script>
-<script src="/blog/js/bootstrap.min.js"></script>
-<script src="/blog/vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="/blog/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="/blog/vendors/imagesLoaded/imagesloaded.pkgd.min.js"></script>
-<script src="/blog/vendors/isotope/isotope.pkgd.min.js"></script>
-<script src="/blog/js/theme.js"></script>
+<script src="{{config('app.url')}}/blog/js/jquery-2.2.0.min.js"></script>
+<script src="{{config('app.url')}}/blog/js/bootstrap.min.js"></script>
+<script src="{{config('app.url')}}/blog/vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="{{config('app.url')}}/blog/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="{{config('app.url')}}/blog/vendors/imagesLoaded/imagesloaded.pkgd.min.js"></script>
+<script src="{{config('app.url')}}/blog/vendors/isotope/isotope.pkgd.min.js"></script>
+<script src="{{config('app.url')}}/blog/js/theme.js"></script>
 </body>
 </html>
