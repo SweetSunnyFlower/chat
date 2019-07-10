@@ -48,8 +48,8 @@
 @endsection
 @section('js')
     <!-- TinyMCE -->
-    <script src="{{asset('plugins/jquery-form/jquery.form.js')}}"></script>
-    <script src="{{asset('plugins/tinymce/tinymce.js')}}"></script>
+    <script src="{{config('app.url').'/'.('plugins/jquery-form/jquery.form.js')}}"></script>
+    <script src="{{config('app.url').'/'.('plugins/tinymce/tinymce.js')}}"></script>
     <script>
         $(function(){
             //TinyMCE
@@ -72,7 +72,7 @@
                 imageupload_url: '/admin/upload'
             });
             tinymce.suffix = ".min";
-            tinyMCE.baseURL = '{{asset('plugins/tinymce')}}';
+            tinyMCE.baseURL = '{{config('app.url').'/'.('plugins/tinymce')}}';
         });
     </script>
 @endsection

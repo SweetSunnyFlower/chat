@@ -315,15 +315,15 @@
 @section('js')
 
     <!-- ChartJs -->
-    <script src="{{asset('plugins/chartjs/Chart.bundle.js')}}"></script>
+    <script src="{{config('app.url').'/'.('plugins/chartjs/Chart.bundle.js')}}"></script>
 
     <!-- Flot Charts Plugin Js -->
-    <script src="{{asset('plugins/flot-charts/jquery.flot.js')}}"></script>
-    <script src="{{asset('plugins/flot-charts/jquery.flot.resize.js')}}"></script>
-    <script src="{{asset('plugins/flot-charts/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('plugins/flot-charts/jquery.flot.categories.js')}}"></script>
-    <script src="{{asset('plugins/flot-charts/jquery.flot.time.js')}}"></script>
+    <script src="{{config('app.url').'/'.('plugins/flot-charts/jquery.flot.js')}}"></script>
+    <script src="{{config('app.url').'/'.('plugins/flot-charts/jquery.flot.resize.js')}}"></script>
+    <script src="{{config('app.url').'/'.('plugins/flot-charts/jquery.flot.pie.js')}}"></script>
+    <script src="{{config('app.url').'/'.('plugins/flot-charts/jquery.flot.categories.js')}}"></script>
+    <script src="{{config('app.url').'/'.('plugins/flot-charts/jquery.flot.time.js')}}"></script>
 
-    <script src="{{asset('js/pages/index.js')}}"></script>
+    <script src="{{config('app.url').'/'.('js/pages/index.js')}}"></script>
 
 @endsection

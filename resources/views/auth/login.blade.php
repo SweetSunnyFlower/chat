@@ -6,23 +6,23 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>前台登录</title>
     <!-- Favicon-->
-    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{config('app.url').'/'.('favicon.ico')}}" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-    <link href="{{asset('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{config('app.url').'/'.('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
-    <link href="{{asset('plugins/node-waves/waves.css')}}" rel="stylesheet" />
+    <link href="{{config('app.url').'/'.('plugins/node-waves/waves.css')}}" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="{{asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
+    <link href="{{config('app.url').'/'.('plugins/animate-css/animate.css')}}" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{config('app.url').'/'.('css/style.css')}}" rel="stylesheet">
 </head>
 
 <body class="login-page bg-grey" style="padding-top: 80px;">
@@ -92,21 +92,21 @@
 
 
 <!-- Jquery Core Js -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{config('app.url').'/'.('plugins/jquery/jquery.min.js')}}"></script>
 
 <!-- Bootstrap Core Js -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
+<script src="{{config('app.url').'/'.('plugins/bootstrap/js/bootstrap.js')}}"></script>
 
 <!-- Waves Effect Plugin Js -->
-<script src="{{asset('plugins/node-waves/waves.js')}}"></script>
+<script src="{{config('app.url').'/'.('plugins/node-waves/waves.js')}}"></script>
 
 <!-- Validation Plugin Js -->
-<script src="{{asset('plugins/jquery-validation/jquery.validate.js')}}"></script>
-<script src="{{asset('js/messages_cn.js')}}"></script>
+<script src="{{config('app.url').'/'.('plugins/jquery-validation/jquery.validate.js')}}"></script>
+<script src="{{config('app.url').'/'.('js/messages_cn.js')}}"></script>
 
 <!-- Custom Js -->
-<script src="{{asset('js/admin.js')}}"></script>
-<script src="{{asset('js/pages/examples/sign-in.js')}}"></script>
+<script src="{{config('app.url').'/'.('js/admin.js')}}"></script>
+<script src="{{config('app.url').'/'.('js/pages/examples/sign-in.js')}}"></script>
 </body>
 
 </html>

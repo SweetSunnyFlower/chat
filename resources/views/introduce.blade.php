@@ -9,19 +9,19 @@
   <meta name="author" content="">
 
   <title>Home</title>
-  <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" />
+  <link rel="shortcut icon" href="{{config('app.url').'/'.('img/favicon.ico')}}" />
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" media="screen" />
+  <link rel="stylesheet" href="{{config('app.url').'/'.('css/bootstrap.min.css')}}" media="screen" />
   <!-- Hover.css -->
-  <link rel="stylesheet" href="{{asset('css/hover-min.css')}}" />
+  <link rel="stylesheet" href="{{config('app.url').'/'.('css/hover-min.css')}}" />
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" media="screen" />
+  <link rel="stylesheet" href="{{config('app.url').'/'.('css/font-awesome.min.css')}}" media="screen" />
   <!-- Owl Carousel -->
-  <link rel="stylesheet" href="{{asset('css/owl.theme.min.css')}}">
-  <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-  <link rel="stylesheet" href="{{asset('css/my.css')}}">
+  <link rel="stylesheet" href="{{config('app.url').'/'.('css/owl.theme.min.css')}}">
+  <link rel="stylesheet" href="{{config('app.url').'/'.('css/owl.carousel.min.css')}}">
+  <link rel="stylesheet" href="{{config('app.url').'/'.('css/my.css')}}">
   <!-- Addon Style -->
-  <link rel="stylesheet" href="{{asset('css/index.style.css')}}" media="screen" />
+  <link rel="stylesheet" href="{{config('app.url').'/'.('css/index.style.css')}}" media="screen" />
   <!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -32,7 +32,7 @@
   <!-- Preloader -->
   <div id="preloader">
     <div id="loader">
-      <img src="{{asset('img/heart_loading.gif')}}" alt="preload spinner">
+      <img src="{{config('app.url').'/'.('img/heart_loading.gif')}}" alt="preload spinner">
       <div class="pre-logo">
         <h4>{{config('app.name')}}</h4>
       </div>
@@ -70,7 +70,7 @@
       <!-- Background -->
       <div class="bg">
         <div class="bg-img">
-          <img src="{{asset('img/bg1280x788.jpg')}}" alt="Background Image" />
+          <img src="{{config('app.url').'/'.('img/bg1280x788.jpg')}}" alt="Background Image" />
         </div>
       </div>
       <!-- End of background -->
@@ -121,7 +121,7 @@
 
           <!-- Avatar image -->
           <div class="col-lg-6 col-md-12 col-sm-12 hidden-md animated">
-            <img src="{{asset('img/avatar500x680.jpg')}}" class="avatar" alt="Avatar">
+            <img src="{{config('app.url').'/'.('img/avatar500x680.jpg')}}" class="avatar" alt="Avatar">
           </div>
           <!-- End avatar image -->
 
@@ -305,7 +305,7 @@
 
             <!-- image 1 -->
             <figure class="cross-image animated">
-              <img src="{{asset('img/project_1.jpg')}}" alt="Project 1" />
+              <img src="{{config('app.url').'/'.('img/project_1.jpg')}}" alt="Project 1" />
               <figcaption>
                 <h2>Project 1</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit libero ac accumsan lobortis.</p>
@@ -810,7 +810,7 @@
   <!-- axios -->
   <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.js"></script>
 
-  <script src="{{asset('/plugins/bootstrap-notify/bootstrap-notify.js')}}"></script>
+  <script src="{{config('app.url').'/'.('/plugins/bootstrap-notify/bootstrap-notify.js')}}"></script>
 
   <!-- end script -->
 </body>
