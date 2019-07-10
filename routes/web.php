@@ -42,6 +42,17 @@ Route::get('sendmessage/{word}',function(\Illuminate\Http\Request $request,$word
 });
 
 Route::get('test',function(){
+    $disk = \Illuminate\Support\Facades\Storage::disk('qiniu');
+    $fileContents = file_get_contents('http://cdn.sweetsunnyflower.com/images/user.png');
+    // create a file
+     dd( $disk->put('avatars/filename.jpg', $fileContents));
+
+    // check if a file exists
+    $exists = $disk->has('file.jpg');
+
+    dd($exists);
+
+
     $img = file_get_contents('https://source.unsplash.com/random/360x244');
     return file_put_contents(public_path('/test').'.jpg',$img);
     $articles = \App\Models\Article::query()->get();
@@ -52,4 +63,5 @@ Route::get('test',function(){
     return 1;
 //   return collect(array_column(\App\User::all('id')->toArray(),'id'))->random();
 });
+
 
