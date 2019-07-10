@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use QL\QueryList;
+use QL\Ext\Chrome;
+use Spatie\Browsershot\Browsershot;
 
 class syncArticles extends Command
 {
@@ -42,15 +45,33 @@ class syncArticles extends Command
             $this->error('<error>请传递ID</error>');
             return ;
         }
+        $newsUrl = 'https://m.toutiao.com/i6546884151050502660/';
+
+        $html = Browsershot::url($newsUrl)
+            ->windowSize(480, 800)
+            ->userAgent('Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36')
+            ->mobile()
+            ->touch()
+            ->bodyHtml();
+
+        \Log::info($html);
+        $ql = QueryList::getInstance();
+        // 注册插件，默认注册的方法名为: chrome
+        $ql->use(Chrome::class);
+        // 或者自定义注册的方法名
+        $ql->use(Chrome::class,'chrome');
+        $article = $ql->chrome("https://www.cnblogs.com/sweetsunnyflower/p/{$article_id}.html");
+
+
         $user = \App\User::query()->where('id', 1)->firstOrFail();
 
-        $file = file_get_contents("https://www.cnblogs.com/sweetsunnyflower/p/{$article_id}.html");
+//        $file = file_get_contents("https://www.cnblogs.com/sweetsunnyflower/p/{$article_id}.html");
         //    $res = file_put_contents('aaa.html',$file);
         //    dd($file);
-        $article = \QL\QueryList::html($file);
+//        $article = \QL\QueryList::html($text);
         $next_prev = $article->find("#post_next_prev")->htmls();
         $contents = $article->find('#cnblogs_post_body')->htmls();
-        //    dd($next_prev);
+            dd($next_prev);
         $title = $article->find('.postTitle')->text();
         //    dd($contents[0]);
         $res = \App\Models\Article::query()->create(
